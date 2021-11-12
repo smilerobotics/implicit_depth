@@ -592,7 +592,7 @@ class LIDF(nn.Module):
 
                 pred_xyz = data_dict['xyz_corrupt_flat'].clone()
                 pred_xyz[data_dict['miss_bid'], data_dict['miss_flat_img_id']] = data_dict['pred_pos']
-                pred_xyz = pred_xyz.reshape(bs,h,w,3).cpu().numpy()
+                pred_xyz = pred_xyz.reshape(bs,h,w,3).cpu().detach().numpy()
                 pred_depth = pred_xyz[0,:,:,2]
                 pred_depth = cv2.resize(pred_depth, (256, 144), interpolation=cv2.INTER_NEAREST)
 
@@ -864,7 +864,7 @@ class RefineNet(nn.Module):
 
                 pred_xyz = data_dict['xyz_corrupt_flat'].clone()
                 pred_xyz[data_dict['miss_bid'], data_dict['miss_flat_img_id']] = data_dict['pred_pos_refine']
-                pred_xyz = pred_xyz.reshape(bs,h,w,3).cpu().numpy()
+                pred_xyz = pred_xyz.reshape(bs,h,w,3).cpu().detach().numpy()
                 pred_depth = pred_xyz[0,:,:,2]
                 pred_depth = cv2.resize(pred_depth, (256, 144), interpolation=cv2.INTER_NEAREST)
 
