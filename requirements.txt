@@ -9,4 +9,4 @@ open3d
 OpenEXR
 plyfile
 h5py
-torch-scatter -f https://pytorch-geometric.com/whl/torch-1.6.0+cu102.html
+torch-scatter -f https://pytorch-geometric.com/whl/torch-1.10.0+cu113.html
